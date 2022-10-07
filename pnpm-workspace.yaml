@@ -1,3 +1,4 @@
 packages:
-  - "project/coffee-finder-app-nextjs/**"
-  - "project/coffee-finder-app-remix/**"
+    # applications
+    - "apps/*"
+    # exclude packages that are inside test/ directories
