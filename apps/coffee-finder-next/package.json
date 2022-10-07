@@ -3,11 +3,18 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev",
-        "build": "next build",
+        "dev": "run-p \"dev:*\"",
+        "dev:css": "pnpm generate:css --watch",
+        "dev:next": "next dev",
+        "build": "run-s \"build:*\"",
+        "build:css": "pnpm generate:css --minify",
+        "build:next": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "generate:css": "tailwind -i ./sp-styles/tailwind.css -o ./styles/tailwind.css"
     },
-    "dependencies": {},
-    "devDependencies": {}
+    "devDependencies": {
+        "tailwindcss": "^3.1.8",
+        "tailwindcss-logical": "^3.0.0"
+    }
 }
