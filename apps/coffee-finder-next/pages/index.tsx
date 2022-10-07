@@ -4,11 +4,31 @@ import Image from "next/image";
 
 const Home: NextPage = () => {
     return (
-        <main className="center">
-            <article>
-                <h2>Hello Coffee Finder App ☕</h2>
-            </article>
-        </main>
+        <>
+            <Head>
+                <title>Coffe finder app</title>
+                <meta
+                    name="description"
+                    content="A coffee finder app to find coffee shop close to you"
+                />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <main className="mlb-xl">
+                <article className="stack center [--center-width:theme(contentWidth.2)]">
+                    <h2>
+                        Coffee Finder <span>☕</span>
+                    </h2>
+                    <p>Disover your local coffee shops!</p>
+                    <button
+                        className="bg-light-red-6 text-scheme-light-on-background focus:ring-2 ring-scheme-light-neutral-surface-2 font-bold drop-shadow-sm hover:drop-shadow-md ring-offset-2 pli-m plb-xs rounded-lg self-start"
+                        onClick={() => console.log("finding")}
+                    >
+                        Find Stores Near You!
+                    </button>
+                    <hr />
+                </article>
+            </main>
+        </>
     );
 };
 
