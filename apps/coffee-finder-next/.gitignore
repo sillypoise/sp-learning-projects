@@ -12,6 +12,8 @@
 /.next/
 /out/
 
+styles/tailwind.css
+
 # production
 /build
 
