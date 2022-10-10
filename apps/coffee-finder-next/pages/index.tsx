@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { CoffeeStoreCard } from "../components/CoffeeStoreCard";
 
 const Home: NextPage = () => {
     return (
@@ -26,6 +27,7 @@ const Home: NextPage = () => {
                         Find Stores Near You!
                     </button>
                     <hr />
+                    <CoffeeStoreCard />
                 </article>
             </main>
         </>
