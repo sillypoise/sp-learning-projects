@@ -19,7 +19,7 @@ dist-ssr
 .DS_Store
 *.suo
 *.ntvs*
-*.njsproj
+*https://github.com/simov/slugify.njsproj
 *.sln
 *.sw?
 
@@ -64,3 +64,6 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# tailwind styles
+apps/*/styles/tailwind.css
