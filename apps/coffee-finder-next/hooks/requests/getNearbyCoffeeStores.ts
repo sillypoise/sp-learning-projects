@@ -10,6 +10,11 @@ let CoffeeStoreParser = z
             address: z.string(),
         }),
         distance: z.number(),
+        imgUrl: z
+            .string()
+            .default(
+                "https://unsplash.com/photos/3b2tADGAWnU/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8Nnx8Y29mZmVlJTIwc2hvcHxlbnwwfHx8fDE2NTIyNTUwMzk&force=true&w=640"
+            ),
     })
     .transform((store) => ({
         ...store,
