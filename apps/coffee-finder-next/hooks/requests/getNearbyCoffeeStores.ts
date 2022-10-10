@@ -43,9 +43,14 @@ async function getNearbyCoffeeStores(latlong: string, limit: number) {
 
         return parsedData;
     } catch (error) {
-        console.log(error);
-        return "oopsie daisy";
+        if (error instanceof Error)
+            return {
+                error: z.string().parse(error.stack),
+                message: "There was a problem getting the data",
+            };
     }
 }
+
+export type PlacesAPIResultsType = z.infer<typeof PlacesAPIResults>;
 
 export { getNearbyCoffeeStores };
