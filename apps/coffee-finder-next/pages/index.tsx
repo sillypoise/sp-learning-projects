@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { CoffeeStoreCard } from "../components/CoffeeStoreCard";
 import { getNearbyCoffeeStores } from "../hooks/requests/getNearbyCoffeeStores";
+import { CoffeeStoreCard } from "../components/CoffeeStoreCard";
 
 const Home: NextPage = (props) => {
     return (
