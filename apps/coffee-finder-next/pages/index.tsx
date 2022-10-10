@@ -14,6 +14,9 @@ type HomeProps = {
 
 const Home: NextPage<HomeProps> = ({ nearbyCoffeeStores }) => {
     let stores = nearbyCoffeeStores["results"];
+    console.log(stores);
+
+    let test = stores[0];
     return (
         <>
             <Head>
@@ -37,7 +40,12 @@ const Home: NextPage<HomeProps> = ({ nearbyCoffeeStores }) => {
                         Find Stores Near You!
                     </button>
                     <hr />
-                    {/* <CoffeeStoreCard name={} /> */}
+                    <CoffeeStoreCard
+                        name={test.name}
+                        address={test.address}
+                        slug={test.slug}
+                        imgUrl={test.imgUrl}
+                    />
                 </article>
             </main>
         </>
