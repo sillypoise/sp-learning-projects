@@ -1,10 +1,19 @@
-import type { NextPage } from "next";
+import type { InferGetStaticPropsType, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { getNearbyCoffeeStores } from "../hooks/requests/getNearbyCoffeeStores";
+import {
+    getNearbyCoffeeStores,
+    PlacesAPIResultsParser,
+    PlacesAPIResultsType,
+} from "../hooks/requests/getNearbyCoffeeStores";
 import { CoffeeStoreCard } from "../components/CoffeeStoreCard";
 
-const Home: NextPage = (props) => {
+type HomeProps = {
+    nearbyCoffeeStores: PlacesAPIResultsType;
+};
+
+const Home: NextPage<HomeProps> = ({ nearbyCoffeeStores }) => {
+    let stores = nearbyCoffeeStores["results"];
     return (
         <>
             <Head>
@@ -28,7 +37,7 @@ const Home: NextPage = (props) => {
                         Find Stores Near You!
                     </button>
                     <hr />
-                    <CoffeeStoreCard />
+                    {/* <CoffeeStoreCard name={} /> */}
                 </article>
             </main>
         </>
@@ -41,11 +50,13 @@ export async function getStaticProps() {
         6
     );
 
-    console.dir(nearbyCoffeeStoresData, { depth: 3 });
+    let parsedNearbyCoffeeeStoresData = PlacesAPIResultsParser.parse(
+        nearbyCoffeeStoresData
+    );
 
     return {
         props: {
-            nearbyCoffeeStores: { nearbyCoffeeStoresData },
+            nearbyCoffeeStores: parsedNearbyCoffeeeStoresData,
         },
     };
 }

@@ -33,8 +33,11 @@ importers:
 
   apps/coffee-finder-next:
     specifiers:
+      slugify: ^1.6.5
       tailwindcss: ^3.1.8
       tailwindcss-logical: ^3.0.0
+    dependencies:
+      slugify: 1.6.5
     devDependencies:
       tailwindcss: 3.1.8
       tailwindcss-logical: 3.0.0
@@ -2578,6 +2581,11 @@ packages:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
     dev: true
+
+  /slugify/1.6.5:
+    resolution: {integrity: sha512-8mo9bslnBO3tr5PEVFzMPIWwWnipGS0xVbYf65zxDqfNwmzYn1LpiKNrR6DlClusuvo+hDHd1zKpmfAe83NQSQ==}
+    engines: {node: '>=8.0.0'}
+    dev: false
 
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}

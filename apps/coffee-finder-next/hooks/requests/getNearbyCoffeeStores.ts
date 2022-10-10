@@ -1,6 +1,7 @@
 import { z } from "zod";
+import slugify from "slugify";
 
-let CoffeeStore = z
+let CoffeeStoreParser = z
     .object({
         fsq_id: z.string(),
         name: z.string(),
@@ -12,11 +13,12 @@ let CoffeeStore = z
     })
     .transform((store) => ({
         ...store,
-        location: store.location.address,
+        address: store.location.address,
+        slug: slugify(store.name, { lower: true }),
     }));
 
-let PlacesAPIResults = z.object({
-    results: z.array(CoffeeStore),
+let PlacesAPIResultsParser = z.object({
+    results: z.array(CoffeeStoreParser),
 });
 
 async function getNearbyCoffeeStores(latlong: string, limit: number) {
@@ -39,7 +41,7 @@ async function getNearbyCoffeeStores(latlong: string, limit: number) {
 
         if (!res) throw new Error("error fetching data");
         let data = await res.json();
-        let parsedData = PlacesAPIResults.parse(data);
+        let parsedData = PlacesAPIResultsParser.parse(data);
 
         return parsedData;
     } catch (error) {
@@ -51,6 +53,6 @@ async function getNearbyCoffeeStores(latlong: string, limit: number) {
     }
 }
 
-export type PlacesAPIResultsType = z.infer<typeof PlacesAPIResults>;
+export type PlacesAPIResultsType = z.infer<typeof PlacesAPIResultsParser>;
 
-export { getNearbyCoffeeStores };
+export { getNearbyCoffeeStores, CoffeeStoreParser, PlacesAPIResultsParser };
