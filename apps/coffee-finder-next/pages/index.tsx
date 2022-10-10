@@ -5,8 +5,6 @@ import Image from "next/image";
 import { getNearbyCoffeeStores } from "../hooks/requests/getNearbyCoffeeStores";
 
 const Home: NextPage = (props) => {
-    console.dir(props);
-
     return (
         <>
             <Head>
@@ -41,6 +39,8 @@ export async function getStaticProps() {
         "4.695562523190975,-74.0449747402204",
         6
     );
+
+    console.dir(nearbyCoffeeStoresData);
 
     return {
         props: {
