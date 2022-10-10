@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { RequestInit } from "next/dist/server/web/spec-extension/request";
 import Head from "next/head";
 import Image from "next/image";
 import { getNearbyCoffeeStores } from "../hooks/requests/getNearbyCoffeeStores";
