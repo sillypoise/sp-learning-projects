@@ -1,10 +1,19 @@
 import { z } from "zod";
 
-let CoffeeStore = z.object({
-    name: z.string(),
-    fsq_id: z.string(),
-    link: z.string(),
-});
+let CoffeeStore = z
+    .object({
+        fsq_id: z.string(),
+        name: z.string(),
+        link: z.string(),
+        location: z.object({
+            address: z.string(),
+        }),
+        distance: z.number(),
+    })
+    .transform((store) => ({
+        ...store,
+        location: store.location.address,
+    }));
 
 let PlacesAPIResults = z.object({
     results: z.array(CoffeeStore),
