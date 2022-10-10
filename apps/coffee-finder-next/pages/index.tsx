@@ -2,6 +2,7 @@ import type { InferGetStaticPropsType, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import {
+    CoffeeStoreType,
     getNearbyCoffeeStores,
     PlacesAPIResultsParser,
     PlacesAPIResultsType,
@@ -14,9 +15,6 @@ type HomeProps = {
 
 const Home: NextPage<HomeProps> = ({ nearbyCoffeeStores }) => {
     let stores = nearbyCoffeeStores["results"];
-    console.log(stores);
-
-    let test = stores[0];
     return (
         <>
             <Head>
@@ -40,12 +38,18 @@ const Home: NextPage<HomeProps> = ({ nearbyCoffeeStores }) => {
                         Find Stores Near You!
                     </button>
                     <hr />
-                    <CoffeeStoreCard
-                        name={test.name}
-                        address={test.address}
-                        slug={test.slug}
-                        imgUrl={test.imgUrl}
-                    />
+                    <ul role="list" className="auto-grid">
+                        {stores.map((store: CoffeeStoreType) => (
+                            <li key={store.fsq_id}>
+                                <CoffeeStoreCard
+                                    name={store.name}
+                                    address={store.address}
+                                    slug={store.slug}
+                                    imgUrl={store.imgUrl}
+                                />
+                            </li>
+                        ))}
+                    </ul>
                 </article>
             </main>
         </>
