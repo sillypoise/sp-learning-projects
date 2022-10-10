@@ -20,16 +20,18 @@ let CoffeeStoreCard: React.FC<CoffeeStoreCardProps> = ({
 }) => {
     return (
         <Link href={`/coffee-store/${slug}}`}>
-            <a>
-                <article className="box">
-                    <header>{name}</header>
-                    <Image
-                        src={z.string().parse(imgUrl)}
-                        alt="default coffee store"
-                        width={640 * 0.5}
-                        height={426 * 0.5}
-                    />
-                    <p>{address}</p>
+            <a className="no-underline">
+                <article className="box rounded-md stack [--stack-gap:theme(spacing.2xs)]">
+                    <header className="font-semibold">{name}</header>
+                    <div className="[&>span]:drop-shadow-md">
+                        <Image
+                            src={z.string().parse(imgUrl)}
+                            alt="default coffee store"
+                            width={640 * 0.5}
+                            height={426 * 0.5}
+                        />
+                    </div>
+                    <p className="text-00  tracking-2">{address}</p>
                 </article>
             </a>
         </Link>
