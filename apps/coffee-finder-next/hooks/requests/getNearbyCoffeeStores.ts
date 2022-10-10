@@ -58,6 +58,13 @@ async function getNearbyCoffeeStores(latlong: string, limit: number) {
     }
 }
 
-export type PlacesAPIResultsType = z.infer<typeof PlacesAPIResultsParser>;
+type PlacesAPIResultsType = z.infer<typeof PlacesAPIResultsParser>;
+type CoffeeStoreType = z.infer<typeof CoffeeStoreParser>;
 
-export { getNearbyCoffeeStores, CoffeeStoreParser, PlacesAPIResultsParser };
+export {
+    getNearbyCoffeeStores,
+    CoffeeStoreParser,
+    PlacesAPIResultsParser,
+    type PlacesAPIResultsType,
+    type CoffeeStoreType,
+};
