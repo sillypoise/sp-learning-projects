@@ -41,7 +41,7 @@ export async function getStaticProps() {
         6
     );
 
-    console.dir(nearbyCoffeeStoresData);
+    console.dir(nearbyCoffeeStoresData, { depth: 3 });
 
     return {
         props: {
