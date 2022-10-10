@@ -3,14 +3,8 @@ import Head from "next/head";
 import Image from "next/image";
 import { getNearbyCoffeeStores } from "../hooks/requests/getNearbyCoffeeStores";
 import { CoffeeStoreCard } from "../components/CoffeeStoreCard";
-import { getNearbyCoffeeStores } from "../hooks/requests/getNearbyCoffeeStores";
 
 const Home: NextPage = (props) => {
-<<<<<<< HEAD
-=======
-    console.dir(props);
-
->>>>>>> 1424a6e (app/coffee-finder-next/foursquareAPI)
     return (
         <>
             <Head>
@@ -42,9 +36,6 @@ const Home: NextPage = (props) => {
 };
 
 export async function getStaticProps() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     async function getNearbyCoffeeStores(latlong: string, limit: number) {
         try {
             let options: RequestInit = {
@@ -71,19 +62,13 @@ export async function getStaticProps() {
         }
     }
 
->>>>>>> 1424a6e (app/coffee-finder-next/foursquareAPI)
-=======
->>>>>>> 82beaf2 (app/coffee-finder-next/foursquareAPI)
     let nearbyCoffeeStoresData = await getNearbyCoffeeStores(
         "4.695562523190975,-74.0449747402204",
         6
     );
 
-<<<<<<< HEAD
     console.dir(nearbyCoffeeStoresData, { depth: 3 });
 
-=======
->>>>>>> 1424a6e (app/coffee-finder-next/foursquareAPI)
     return {
         props: {
             nearbyCoffeeStores: { nearbyCoffeeStoresData },
