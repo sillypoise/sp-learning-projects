@@ -1,26 +1,27 @@
 import { GetStaticPropsContext, NextPage } from "next";
 import { z } from "zod";
 import {
+    CoffeeStoreType,
     getNearbyCoffeeStores,
     PlacesAPIResultsParser,
-    PlacesAPIResultsType,
 } from "../../hooks/requests/getNearbyCoffeeStores";
 
 type StoreProps = {
-    nearbyCoffeeStores: PlacesAPIResultsType;
+    store: CoffeeStoreType;
 };
 
-const Store: NextPage<StoreProps> = ({ nearbyCoffeeStores }) => {
-    // console.log(nearbyCoffeeStores);
+const Store: NextPage<StoreProps> = ({ store }) => {
+    console.log(store);
     return (
         <article>
             <h1>Dyanamic coffee store page!</h1>
+            <pre>{JSON.stringify(store, null, 4)}</pre>
         </article>
     );
 };
 
 export async function getStaticProps({ params }: GetStaticPropsContext) {
-    let param = z.string().parse(params?.store);
+    let storeParam = z.string().parse(params?.store);
 
     let nearbyCoffeeStoresData = await getNearbyCoffeeStores(
         "4.695562523190975,-74.0449747402204",
@@ -31,9 +32,20 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
         nearbyCoffeeStoresData
     );
 
+    let filteredStoreArray = parsedNearbyCoffeeeStoresData["results"].filter(
+        (store) => {
+            let compoundId = `${store.slug}_${store.fsq_id}`;
+            return compoundId === storeParam;
+        }
+    );
+
+    let filteredStore = filteredStoreArray.length
+        ? filteredStoreArray[0]
+        : { message: "no store found " };
+
     return {
         props: {
-            nearbyCoffeeStores: parsedNearbyCoffeeeStoresData,
+            store: filteredStore,
         },
     };
 }
@@ -53,11 +65,11 @@ export async function getStaticPaths() {
         z
             .object({
                 fsq_id: z.string(),
-                name: z.string(),
+                slug: z.string(),
             })
             .transform((s) => ({
                 params: {
-                    store: `${s.name}_${s.fsq_id}`,
+                    store: `${s.slug}_${s.fsq_id}`,
                 },
             }))
     );
