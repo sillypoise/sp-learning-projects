@@ -20,9 +20,9 @@ let CoffeeStoreCard: React.FC<CoffeeStoreCardProps> = ({
 }) => {
     let parsedImgUrl = z.string().parse(imgUrl);
     return (
-        <Link href={`/coffee-store/${slug}}`}>
+        <Link href={`/coffee-store/${slug}`}>
             <a className="no-underline">
-                <article className="rounded-lg overflow-hidden shadow-lg stack [--stack-gap:theme(spacing.xs)] plb-xs bg-[color:var(--neutral-surface-0)]">
+                <article className="rounded-lg overflow-hidden shadow-lg stack [--stack-gap:theme(spacing.xs)] plb-xs hover:bg-[color:var(--neutral-surface-2)]">
                     <div className="pli-xs">
                         <header className="stack [--stack-gap:theme(spacing.2xs)]">
                             <p className="text-1 font-bold">{name}</p>
