@@ -37,18 +37,27 @@ const Home: NextPage<HomeProps> = ({ nearbyCoffeeStores }) => {
                         Find Stores Near You!
                     </button>
                     <hr />
-                    <ul role="list" className="auto-grid">
-                        {stores.map((store: CoffeeStoreType) => (
-                            <li key={store.fsq_id}>
-                                <CoffeeStoreCard
-                                    name={store.name}
-                                    address={store.address}
-                                    slug={store.slug}
-                                    imgUrl={store.imgUrl}
-                                />
-                            </li>
-                        ))}
-                    </ul>
+                    <h4>Bogota stores</h4>
+                    {!stores.length ? (
+                        <p>
+                            Seems there was an issue, try refreshing the page.
+                            Apologies.
+                        </p>
+                    ) : (
+                        <ul role="list" className="auto-grid">
+                            {stores.map((store: CoffeeStoreType) => (
+                                <li key={store.fsq_id}>
+                                    <CoffeeStoreCard
+                                        id={store.fsq_id}
+                                        name={store.name}
+                                        address={store.address}
+                                        slug={store.slug}
+                                        imgUrl={store.imgUrl}
+                                    />
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </article>
             </main>
         </>

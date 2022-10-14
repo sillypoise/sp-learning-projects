@@ -13,6 +13,7 @@ interface CoffeeStoreCardProps {
 }
 
 let CoffeeStoreCard: React.FC<CoffeeStoreCardProps> = ({
+    id,
     name,
     slug,
     address,
@@ -20,7 +21,7 @@ let CoffeeStoreCard: React.FC<CoffeeStoreCardProps> = ({
 }) => {
     let parsedImgUrl = z.string().parse(imgUrl);
     return (
-        <Link href={`/coffee-store/${slug}`}>
+        <Link href={`/coffee-store/${slug}_${id}`}>
             <a className="no-underline">
                 <article className="rounded-lg overflow-hidden shadow-lg stack [--stack-gap:theme(spacing.xs)] plb-xs hover:bg-[color:var(--neutral-surface-2)]">
                     <div className="pli-xs">
