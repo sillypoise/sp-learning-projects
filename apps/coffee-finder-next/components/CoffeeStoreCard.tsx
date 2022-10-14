@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { z } from "zod";
+import { ImageWrapper } from "./ImageWrapper";
 
 interface CoffeeStoreCardProps {
     id?: string;
@@ -18,20 +19,28 @@ let CoffeeStoreCard: React.FC<CoffeeStoreCardProps> = ({
     address,
     imgUrl,
 }) => {
+    let parsedImgUrl = z.string().parse(imgUrl);
     return (
         <Link href={`/coffee-store/${slug}}`}>
             <a className="no-underline">
-                <article className="box rounded-md stack [--stack-gap:theme(spacing.2xs)]">
-                    <header className="font-semibold">{name}</header>
-                    <div className="[&>span]:drop-shadow-md">
-                        <Image
-                            src={z.string().parse(imgUrl)}
-                            alt="default coffee store"
-                            width={640 * 0.5}
-                            height={426 * 0.5}
-                        />
+                <article className="rounded-lg overflow-hidden shadow-lg stack">
+                    <ImageWrapper
+                        srcSet={[""]}
+                        src={parsedImgUrl}
+                        className="w-full object-cover max-bs-[10em]"
+                        altText="default coffee shop"
+                        lazyLoading={false}
+                    />
+                    <div className="stack [--stack-gap:theme(spacing.2xl)] grow-[5] justify-between mbs-m mbe-xs pli-m">
+                        <header className="stack [--stack-gap:theme(spacing.2xs)]">
+                            <p className="text-1 font-bold">{name}</p>
+                        </header>
+                        <div>
+                            <p className="text-00 text-[color:var(--neutral-on-surface-1)] opacity-80">
+                                {address}
+                            </p>
+                        </div>
                     </div>
-                    <p className="text-00  tracking-2">{address}</p>
                 </article>
             </a>
         </Link>
