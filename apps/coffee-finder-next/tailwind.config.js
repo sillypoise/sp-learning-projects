@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+//** @type {import('tailwindcss').Config} */
 let { light, dark, overlay } = require("./sp-styles/colors");
 
 module.exports = {
@@ -14,43 +14,100 @@ module.exports = {
             overlay,
             scheme: {
                 light: {
-                    background: light.gray[1],
-                    "on-background": light.gray[12],
                     neutral: {
                         surface: {
-                            0: light.gray[2],
-                            1: light.gray[3],
-                            2: light.gray[4],
-                            3: light.gray[5],
-                            4: light.gray[6],
+                            0: light.gray[1],
+                            1: light.gray[2],
+                            2: light.gray[3],
+                            3: light.gray[4],
+                            4: light.gray[5],
                         },
                         "on-surface": {
-                            0: light.gray[11],
-                            1: light.gray[12],
+                            0: light.gray[12],
+                            1: light.gray[11],
+                        },
+                        border: {
+                            0: light.gray[8],
+                            1: light.gray[7],
+                            2: light.gray[6],
+                        },
+                        solid: {
+                            0: light.gray[10],
+                            1: light.gray[9],
                         },
                     },
-                    primary: light.sky[9],
-                    secondary: dark.red[6],
+                    primary: {
+                        surface: {
+                            0: light.sky[1],
+                            1: light.sky[2],
+                            2: light.sky[3],
+                            3: light.sky[4],
+                            4: light.sky[5],
+                        },
+                        "on-surface": {
+                            0: light.sky[12],
+                            1: light.sky[11],
+                        },
+                        border: {
+                            0: light.sky[8],
+                            1: light.sky[7],
+                            2: light.sky[6],
+                        },
+                        solid: {
+                            0: light.sky[10],
+                            1: light.sky[9],
+                        },
+                    },
+                    secondary: {},
+                    tertiary: {},
                 },
                 dark: {
-                    background: dark.gray[1],
-                    "on-background": dark.gray[12],
                     neutral: {
                         surface: {
-                            0: dark.gray[2],
-                            1: dark.gray[3],
-                            2: dark.gray[4],
-                            3: dark.gray[5],
-                            4: dark.gray[6],
+                            0: dark.gray[1],
+                            1: dark.gray[2],
+                            2: dark.gray[3],
+                            3: dark.gray[4],
+                            4: dark.gray[5],
                         },
                         "on-surface": {
-                            0: dark.gray[11],
-                            1: dark.gray[12],
+                            0: dark.gray[12],
+                            1: dark.gray[11],
+                        },
+                        border: {
+                            0: dark.gray[8],
+                            1: dark.gray[7],
+                            2: dark.gray[6],
+                        },
+                        solid: {
+                            0: dark.gray[10],
+                            1: dark.gray[9],
                         },
                     },
-                    primary: dark.amber[9],
-                    secondary: light.red[6],
-                    nord: {},
+                    primary: {
+                        surface: {
+                            0: dark.sky[1],
+                            1: dark.sky[2],
+                            2: dark.sky[3],
+                            3: dark.sky[4],
+                            4: dark.sky[5],
+                        },
+                        "on-surface": {
+                            0: dark.sky[12],
+                            1: dark.sky[11],
+                        },
+                        border: {
+                            0: dark.sky[8],
+                            1: dark.sky[7],
+                            2: dark.sky[6],
+                        },
+                        solid: {
+                            0: dark.sky[10],
+                            1: dark.sky[9],
+                        },
+                    },
+                    secondary: {},
+                    tertiary: {},
                 },
                 transparent: "transparent",
                 current: "currentColor",
@@ -166,8 +223,8 @@ module.exports = {
             5: "var(--border-width-5)",
         },
         screens: {
-            md: "var(--breakpoint-md)",
-            lg: "var(--breakpoint-lg)",
+            md: "50rem",
+            lg: "80rem",
         },
         extends: {},
     },

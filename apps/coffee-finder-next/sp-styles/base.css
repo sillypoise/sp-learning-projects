@@ -1,6 +1,6 @@
 body {
-    color: var(--on-background);
-    background: var(--background);
+    color: var(--neutral-on-surface-0);
+    background: var(--neutral-surface-0);
     font-size: theme(fontSize.1);
     font-family: theme(fontFamily.sans);
     line-height: theme(lineHeight.2);
@@ -84,6 +84,6 @@ main:focus {
 }
 
 ::selection {
-    color: var(--background);
-    background: var(--on-background);
+    color: var(--neutral-surface-0);
+    background: var(--neutral-on-surface-0);
 }

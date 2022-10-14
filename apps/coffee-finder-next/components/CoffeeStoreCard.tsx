@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { z } from "zod";
 import { ImageWrapper } from "./ImageWrapper";
@@ -23,7 +22,12 @@ let CoffeeStoreCard: React.FC<CoffeeStoreCardProps> = ({
     return (
         <Link href={`/coffee-store/${slug}}`}>
             <a className="no-underline">
-                <article className="rounded-lg overflow-hidden shadow-lg stack">
+                <article className="rounded-lg overflow-hidden shadow-lg stack [--stack-gap:theme(spacing.xs)] plb-xs bg-[color:var(--neutral-surface-0)]">
+                    <div className="pli-xs">
+                        <header className="stack [--stack-gap:theme(spacing.2xs)]">
+                            <p className="text-1 font-bold">{name}</p>
+                        </header>
+                    </div>
                     <ImageWrapper
                         srcSet={[""]}
                         src={parsedImgUrl}
@@ -31,15 +35,10 @@ let CoffeeStoreCard: React.FC<CoffeeStoreCardProps> = ({
                         altText="default coffee shop"
                         lazyLoading={false}
                     />
-                    <div className="stack [--stack-gap:theme(spacing.2xl)] grow-[5] justify-between mbs-m mbe-xs pli-m">
-                        <header className="stack [--stack-gap:theme(spacing.2xs)]">
-                            <p className="text-1 font-bold">{name}</p>
-                        </header>
-                        <div>
-                            <p className="text-00 text-[color:var(--neutral-on-surface-1)] opacity-80">
-                                {address}
-                            </p>
-                        </div>
+                    <div className="pli-xs">
+                        <p className="text-00 text-[color:var(--neutral-on-surface-1)] opacity-80">
+                            {address}
+                        </p>
                     </div>
                 </article>
             </a>
