@@ -1,10 +1,15 @@
 {
+    "name": "ai-writing",
     "private": true,
     "sideEffects": false,
     "scripts": {
-        "build": "remix build",
-        "dev": "remix dev",
-        "start": "remix-serve build"
+        "build:remix": "remix build",
+        "build:css": "pnpm generate:css --minify",
+        "dev": "run-p \"dev:*\"",
+        "dev:css": "pnpm generate:css --watch",
+        "dev:remix": "remix dev",
+        "start": "remix-serve build",
+        "generate:css": "tailwindcss -i ./sp-styles/tailwind.css -o app/styles/tailwind.css"
     },
     "dependencies": {},
     "devDependencies": {},

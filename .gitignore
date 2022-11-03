@@ -66,4 +66,5 @@ yarn-error.log*
 *.tsbuildinfo
 
 # tailwind styles
-apps/*/styles/tailwind.css
+app/*/styles/tailwind.css
+app/*/app/styles/tailwind.css
